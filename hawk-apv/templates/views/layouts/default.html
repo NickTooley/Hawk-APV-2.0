@@ -1,0 +1,208 @@
+{% import "mixins/flash-messages.html" as FM %}
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>{{ title|default("Hawk APV") }}</title>
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+		{# Customise the stylesheet for your site by editing /public/styles/site.sass #}
+		<link href="/styles/site.css" rel="stylesheet">
+
+		{# This file provides the default styling for the KeystoneJS Content Editor #}
+		{% if user and user.canAccessKeystone %}
+			<link href="/keystone/styles/content/editor.min.css" rel="stylesheet">
+		{% endif %}
+
+		{# HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+		   Safely remove this block if you are not targeting IE8 #}
+		<!--[if lt IE 9]>
+			<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
+			<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		{# Include template-specific stylesheets by extending the css block #}
+		{% block css %}{% endblock %}
+
+		{# Add any other template-specific HEAD tags by extending the head block #}
+		{% block head %}{% endblock %}
+		
+		
+
+	</head>
+	<body>
+
+		{# HEADER #}
+		<!-- <div id="header" class="container">
+
+			{# Customise your site"s navigation by changing the navLinks Array in ./routes/middleware.js
+			   ... or completely change this header to suit your design. #}
+			<div role="navigation" class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/"><img src="https://res.cloudinary.com/hawkapv-co-nz/image/upload/v1548726905/uccv7fis20sjsb4o8qis.png" width=150></a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-left">
+
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							{% for link in navLinks %}
+								<li class="{{ 'active' if link.key == section else '' }}">
+									<a href="{{ link.href }}">{{ link.label }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+						
+						<ul class="nav navbar-nav navbar-right">
+							{% if user %}
+								{% if user.canAccessKeystone %}
+								<li><a href="/keystone">Open Keystone</a></li>
+								{% endif %}
+								<li><a href="/keystone/signout">Sign Out</a></li>
+							{% else %}
+								<li><a href="/keystone/signin">Sign In</a></li>
+							{% endif %}
+						</ul> 
+
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div id="page_wrapper">
+		
+		{% include "layouts/header.html" %}
+
+		
+		{# BODY #}
+		<div id="body">
+			{# NOTE:
+			   There is no .container wrapping class around body blocks to allow more flexibility in design.
+			   Remember to include it in your templates when you override the intro and content blocks! #}
+
+			{# The Intro block appears above flash messages (used for temporary information display) #}
+			{% block intro %}{% endblock %}
+
+			{# Flash messages allow you to display once-off status messages to users, e.g. form
+			   validation errors, success messages, etc. #}
+			{{ FM.flashMessages(messages) }}
+
+			{# The content block should contain the body of your template"s content #}
+			{% block content %}{% endblock %}
+		</div>
+
+
+		{# FOOTER #}
+		<div id="footer" class="container">
+			
+		</div>
+
+
+		{# JAVASCRIPT #}
+
+		{# jQuery 1.11.3 is included by default, and required by both Bootstrap
+			and the KeystoneJS Content Editor. If you are not targeting IE8,
+			you can upgrade to 2.1.4 (also bundled) for better performance. #}
+		<script src="/js/jquery/jquery-1.11.3.min.js"></script>
+
+		{# Customise which Bootstrap javascript files are served by including
+			them specifically here, instead of bootstrap-3.3.5.min.js #}
+		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
+
+		{# The KeystoneJS Content Editor provides support for ks-editable data attributes,
+			which generate links to edit content for users who can access Keystone #}
+		{% if user and user.canAccessKeystone %}
+			<script src="/keystone/js/content/editor.js"></script>
+		{% endif %}
+
+		{# Add scripts that are globally required by your site here. #}
+
+
+
+
+		<link rel='stylesheet' id='zn_all_g_fonts-css'  href='//fonts.googleapis.com/css?family=Montserrat%3Aregular%2C500%2C700%7COpen+Sans%3Aregular%2C300%2C600%2C700%2C800&#038;ver=4.9.9' type='text/css' media='all' />
+<link rel='stylesheet' id='rs-plugin-settings-css'  href='http://hawkapv.co.nz/wp-content/plugins/revslider/public/assets/css/settings.css?ver=5.2.6' type='text/css' media='all' />
+<style id='rs-plugin-settings-inline-css' type='text/css'>
+#rs-demo-id {}
+</style>
+<link rel='stylesheet' id='woocommerce-layout-css'  href='http://hawkapv.co.nz/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=3.4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce-smallscreen-css'  href='http://hawkapv.co.nz/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=3.4.3' type='text/css' media='only screen and (max-width: 767px)' />
+<link rel='stylesheet' id='woocommerce-general-css'  href='http://hawkapv.co.nz/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=3.4.3' type='text/css' media='all' />
+<style id='woocommerce-inline-inline-css' type='text/css'>
+.woocommerce form .form-row .required { visibility: visible; }
+</style>
+<link rel='stylesheet' id='plhg-main-css-css'  href='http://hawkapv.co.nz/wp-content/plugins/hogash-post-love/assets/frontend/css/plhg-styles.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='hg-mailchimp-styles-css'  href='http://hawkapv.co.nz/wp-content/themes/kallyas/framework/hogash-mailchimp/assets/css/hg-mailchimp.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='kallyas-styles-css'  href='http://hawkapv.co.nz/wp-content/themes/kallyas/style.css?ver=4.16.0' type='text/css' media='all' />
+<link rel='stylesheet' id='th-bootstrap-styles-css'  href='http://hawkapv.co.nz/wp-content/themes/kallyas/css/bootstrap.min.css?ver=4.16.0' type='text/css' media='all' />
+<link rel='stylesheet' id='th-theme-template-styles-css'  href='http://hawkapv.co.nz/wp-content/themes/kallyas/css/template.min.css?ver=4.16.0' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce-overrides-css'  href='http://hawkapv.co.nz/wp-content/themes/kallyas/css/plugins/kl-woocommerce.css?ver=4.16.0' type='text/css' media='all' />
+<link rel='stylesheet' id='zion-frontend-css'  href='http://hawkapv.co.nz/wp-content/themes/kallyas/framework/zion-builder/assets/css/znb_frontend.css?ver=1.0.20' type='text/css' media='all' />
+<link rel='stylesheet' id='1048-layout.css-css'  href='//hawkapv.co.nz/wp-content/uploads/zion-builder/cache/1048-layout.css?ver=31aee9c009eb4ba069be10304bff54cd' type='text/css' media='all' />
+<link rel='stylesheet' id='th-theme-print-stylesheet-css'  href='http://hawkapv.co.nz/wp-content/themes/kallyas/css/print.css?ver=4.16.0' type='text/css' media='print' />
+<link rel='stylesheet' id='th-theme-options-styles-css'  href='//hawkapv.co.nz/wp-content/uploads/zn_dynamic.css?ver=1531108733' type='text/css' media='all' />
+<script type='text/javascript' src='http://hawkapv.co.nz/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://hawkapv.co.nz/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='http://hawkapv.co.nz/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.tools.min.js?ver=5.2.6'></script>
+<script type='text/javascript' src='http://hawkapv.co.nz/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.revolution.min.js?ver=5.2.6'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var plhg_script_vars = {"ajaxurl":"http:\/\/hawkapv.co.nz\/wp-admin\/admin-ajax.php","nonce":"2811ea6d8a","error_message":"Sorry, there was a problem processing your request."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://hawkapv.co.nz/wp-content/plugins/hogash-post-love/assets/frontend/js/script.js?ver=1.0.0'></script>
+<link rel='https://api.w.org/' href='http://hawkapv.co.nz/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://hawkapv.co.nz/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://hawkapv.co.nz/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.9.9" />
+<meta name="generator" content="WooCommerce 3.4.3" />
+<link rel='shortlink' href='http://hawkapv.co.nz/' />
+<script type='text/javascript'>
+	/* <![CDATA[ */
+	var zn_do_login = {"ajaxurl":"\/wp-admin\/admin-ajax.php","add_to_cart_text":"Item Added to cart!"};
+	var ZnThemeAjax = {"ajaxurl":"\/wp-admin\/admin-ajax.php","zn_back_text":"Back","zn_color_theme":"light","res_menu_trigger":"992","top_offset_tolerance":"","logout_url":"http:\/\/hawkapv.co.nz\/wp-login.php?action=logout&redirect_to=http%3A%2F%2Fhawkapv.co.nz&_wpnonce=330af59671"};
+	/* ]]> */
+	</script>
+	<script type='text/javascript' src='http://hawkapv.co.nz/wp-content/themes/kallyas/js/znscript.min.js?ver=4.16.0'></script>
+	<script type='text/javascript' src='http://hawkapv.co.nz/wp-content/themes/kallyas/addons/slick/slick.min.js?ver=4.16.0'></script>
+	<script type='text/javascript' src='http://hawkapv.co.nz/wp-content/themes/kallyas/framework/zion-builder/dist/znpb_frontend.bundle.js?ver=1.0.20'></script>
+	<script type='text/javascript' src='http://hawkapv.co.nz/wp-includes/js/wp-embed.min.js?ver=4.9.9'></script>
+<link rel="alternate" type="application/json+oembed" href="http://hawkapv.co.nz/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhawkapv.co.nz%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://hawkapv.co.nz/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhawkapv.co.nz%2F&#038;format=xml" />
+		<meta name="theme-color"
+			  content="#019942">
+				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+		{# Include template-specific javascript files by extending the js block #}
+		{% block js %}{% endblock %}
+	</body>
+</html>
